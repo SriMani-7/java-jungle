@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="guess" />
         <module name="tic-tac-toe" />
         <module name="chitchat" />
+        <module name="track-expenses" />
+        <module name="guess" />
       </profile>
     </annotationProcessing>
   </component>

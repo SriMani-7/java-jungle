@@ -8,6 +8,7 @@
   	<module>guess</module>
   	<module>tic-tac-toe</module>
     <module>chitchat</module>
+    <module>track-expenses</module>
   </modules>
   <properties>
     <maven.compiler.source>18</maven.compiler.source>

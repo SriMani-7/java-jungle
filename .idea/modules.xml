@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/chitchat/chitchat.iml" filepath="$PROJECT_DIR$/chitchat/chitchat.iml" />
       <module fileurl="file://$PROJECT_DIR$/guess/guess.iml" filepath="$PROJECT_DIR$/guess/guess.iml" />
       <module fileurl="file://$PROJECT_DIR$/tic-tac-toe/tic-tac-toe.iml" filepath="$PROJECT_DIR$/tic-tac-toe/tic-tac-toe.iml" />
     </modules>
