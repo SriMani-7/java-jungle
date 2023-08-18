@@ -1,14 +1,18 @@
 package srimani7.javajungle.track;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Tracker {
     private final List<Transaction> transactions;
-    public Tracker() {
-        transactions = new LinkedList<>();
+    public final DatabaseHandler databaseHandler;
+
+    public Tracker(DatabaseHandler databaseHandler) throws SQLException {
+        this.databaseHandler = databaseHandler;
+        transactions = databaseHandler.selectAll();
     }
 
     public void printHistory() {
@@ -21,7 +25,7 @@ public class Tracker {
         System.out.println(builder);
     }
 
-    private void add(Scanner scanner) {
+    private void add(Scanner scanner) throws SQLException {
         Transaction transaction = new Transaction();
         // date
         System.out.print("Enter date DD/MM/YYYY  📅: ");
@@ -51,6 +55,7 @@ public class Tracker {
         scanner.nextLine();
         transaction.note = scanner.nextLine();
         transactions.add(transaction);
+        databaseHandler.insert(transaction);
     }
 
     public String transactionType(String input) {
@@ -60,8 +65,10 @@ public class Tracker {
         return null;
     }
 
-    public static void main(String[] args) {
-        Tracker tracker = new Tracker();
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        Connection connection = DatabaseHandler.getConnection();
+        DatabaseHandler databaseHandler = new DatabaseHandler(connection);
+        Tracker tracker = new Tracker(databaseHandler);
         String options = """
                 1. Add new transaction
                 2. Print history
@@ -85,6 +92,7 @@ public class Tracker {
         } while (choice != 0); // loop runs until user enters 0
 
         // close scanner
+        connection.close();
         scanner.close();
     }
 
